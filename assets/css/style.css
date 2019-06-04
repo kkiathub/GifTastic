@@ -1,0 +1,14 @@
+.animal {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 10px 3px;
+}
+
+#add-animal {
+    margin-top: 8px;
+}
+
+.animal-box {
+    float: left;
+    margin-right: 18px;
+}
