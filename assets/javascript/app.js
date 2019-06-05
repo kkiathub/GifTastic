@@ -1,5 +1,5 @@
 // curl "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5"
-var topics = ["hamburger", "hot dog", "taco", "noodles", "pasta", "wonton"];
+var topics = ["hamburger", "hot dog", "taco", "noodles", "pasta", "wonton", "pho", "fried chicken"];
 
 function buildQueryURL(searchStr) {
     // queryURL is the url we'll use to query the API
@@ -115,6 +115,8 @@ function buildQueryURL(searchStr) {
     // Calling renderButtons which handles the processing of our movie array
     renderButtons();
 
+    // clear input text
+    $("#food-input").val("");
   });
 
 

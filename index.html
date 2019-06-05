@@ -21,19 +21,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-9">
+            <div class="col-md-6 col-sm-12">
+                <form id="food-form">
+                    <!-- <label for="food-input">Add Food</label> -->
+                    <input type="text" class="form-control" id="food-input">
+                    
+                    <!-- Button triggers new movie to be added -->
+                    <button type="submit" id="add-food" class="btn btn-success">Add Food</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
                 <!-- animal gifs will get dumped here -->
                 <div id="food-view"></div>
-            </div>
-            <div class="col-3">
-                <form id="food-form">
-                    <label for="food-input">Add Food</label>
-                    <input type="text" class="form-control" id="food-input">
-                
-                    <!-- Button triggers new movie to be added -->
-                    <button type="submit" id="add-food" class="btn btn-info">Submit</button>
-                </form>
-
             </div>
         </div>
     </div>

@@ -1,7 +1,27 @@
+
+body {
+    background-image: url("../images/bg.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#food-form {
+    font-weight: bold;
+    margin: 10px;
+    border: 3px solid yellow;
+    padding: 10px;
+}
+
 .food {
     padding-top: 3px;
     padding-bottom: 3px;
     margin: 10px 3px;
+    margin-bottom: 0px;
+}
+
+#food-input {
+    margin-top: 10px;
+
 }
 
 #add-food {
