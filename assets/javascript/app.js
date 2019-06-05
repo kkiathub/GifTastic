@@ -1,5 +1,5 @@
 // curl "http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5"
-var topics = ["cat", "dog", "pig"];
+var topics = ["hamburger", "hot dog", "taco", "noodles", "pasta", "wonton"];
 
 function buildQueryURL(searchStr) {
     // queryURL is the url we'll use to query the API
@@ -15,14 +15,11 @@ function buildQueryURL(searchStr) {
     // specify the number of records returned
     queryParams.limit = 10;
 
-    // specify the rating
-    queryParams.rating = "g";
-
     return queryURL + $.param(queryParams);
   }
 
-  // function to display animal gifs
-  function displayAnimalGifs() {
+  // function to display food gifs
+  function displayFoodGifs() {
 
     var queryURL = buildQueryURL($(this).attr("data-name"));
     console.log(queryURL);
@@ -31,22 +28,26 @@ function buildQueryURL(searchStr) {
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-      $("#animals-view").empty();
+      $("#food-view").empty();
       console.log(response);
 
       var results = response.data;
       // ========================
 
       for (var i = 0; i < results.length; i++) {
-        var animalDiv = $("<figure>");
-        animalDiv.addClass("animal-box");
+        var foodDiv = $("<figure>");
+        foodDiv.addClass("food-box");
 
         var p = $("<figcaption>").text("Rating: " + results[i].rating);
-        var animalImage = $("<img>").attr("src", results[i].images.fixed_height.url);
-        animalDiv.append(p);
-        animalDiv.append(animalImage);
+        var foodImage = $("<img>").attr("src", results[i].images.fixed_height.url);
+        foodImage.attr("data-still",results[i].images.fixed_height_still.url );
+        foodImage.attr("data-anim",results[i].images.fixed_height.url );
+        foodImage.attr("data-state","animate");
+        foodImage.addClass("img-gif");
+        foodDiv.append(p);
+        foodDiv.append(foodImage);
         
-        $("#animals-view").append(animalDiv );
+        $("#food-view").append(foodDiv );
       }
 
     });
@@ -67,7 +68,7 @@ function buildQueryURL(searchStr) {
       var a = $("<button>");
       // Adds a class of movie to our button
       a.attr("type","button");
-      a.addClass("animal btn btn-info");
+      a.addClass("food btn btn-info");
       // Added a data-attribute
       a.attr("data-name", topics[i]);
       // Provided the initial button text
@@ -77,24 +78,39 @@ function buildQueryURL(searchStr) {
     }
   }
 
-  $("#add-animal").on("click", function(event) {
+  function toggleAnimation() {
+    // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+    var state = $(this).attr("data-state");
+    // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+    // Then, set the image's data-state to animate
+    // Else set src to the data-still value
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-anim"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+  }
+
+  $("#add-food").on("click", function(event) {
     event.preventDefault();
     // This line of code will grab the input from the textbox
-    var animal = $("#animal-input").val().trim();
+    var food = $("#food-input").val().trim();
 
-    if (animal.length===0) {
+    if (food.length===0) {
         // if null string, return.
         return;
     }
 
-    if (topics.indexOf(animal)>=0) {
-        // this animal is already existed in the array.
-        console.log(animal + "repeat!");
+    if (topics.indexOf(food)>=0) {
+        // this food is already existed in the array.
+        console.log(food + "repeat!");
         return;
     }
 
     // The movie from the textbox is then added to our array
-    topics.push(animal);
+    topics.push(food);
 
     // Calling renderButtons which handles the processing of our movie array
     renderButtons();
@@ -103,7 +119,9 @@ function buildQueryURL(searchStr) {
 
 
   // Adding click event listeners to all elements with a class of "movie"
-  $(document).on("click", ".animal", displayAnimalGifs);
+  $(document).on("click", ".food", displayFoodGifs);
+
+  $(document).on("click", ".img-gif", toggleAnimation);
 
   // Calling the renderButtons function to display the intial buttons
   renderButtons();
