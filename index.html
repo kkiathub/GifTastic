@@ -15,20 +15,17 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div id="buttons-view">
-                    <button type="button" class="btn btn-info">test</button>
-                </div>
+                <div id="buttons-view"></div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <form id="food-form">
-                    <!-- <label for="food-input">Add Food</label> -->
-                    <input type="text" class="form-control" id="food-input">
-                    
-                    <!-- Button triggers new movie to be added -->
-                    <button type="submit" id="add-food" class="btn btn-success">Add Food</button>
-                </form>
+            <div class="col-12 col-md-8">
+                <div class="input-group mb-3" id="food-form">
+                    <input type="text" class="form-control" id="food-input" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="button" id="add-food">Add Food</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -40,8 +37,10 @@
     </div>
 
       <!-- jQuery JS -->
-    <script src="https://code.jquery.com/jquery.js"></script>   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>   
+    <!-- <script src="https://code.jquery.com/jquery.js"></script>   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- Code to the JavaScript File -->
     <script src="assets/javascript/app.js"></script>
 
