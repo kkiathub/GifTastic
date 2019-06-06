@@ -160,9 +160,8 @@ function addToFavorite(item) {
   };
 
   favorList.push(favItem);
-  // save to local storage
 
-  console.log("json = " + JSON.stringify(favorList));
+  // save to local storage
   localStorage.clear();
   localStorage.setItem("favorList", JSON.stringify(favorList));
 }
