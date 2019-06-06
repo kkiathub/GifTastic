@@ -160,9 +160,6 @@ function addToFavorite(item) {
   };
 
   favorList.push(favItem);
-  
-  console.log(favorList);
-
   // save to local storage
 
   console.log("json = " + JSON.stringify(favorList));
@@ -179,8 +176,6 @@ function removeFromFavorite(item) {
       return;
     }
   }
-  console.log(favorList);
-
   // save to local storage
   localStorage.clear();
   localStorage.setItem("favorList", favorList);
@@ -192,8 +187,7 @@ function loadFavorite() {
     return;
   }
   favorList = JSON.parse(data);
-  console.log("load favor");
-  console.log(favorList);
+
 }
 
 function toggleFavorite() {
