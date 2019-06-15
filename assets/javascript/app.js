@@ -17,7 +17,7 @@ function buildQueryURL(searchStr) {
 
   // specify the number of records returned
   queryParams.limit = 10;
-
+  console.log($.param(queryParams));
   return queryURL + $.param(queryParams);
 }
 
@@ -38,6 +38,7 @@ function displayFoodGifs() {
     url: queryURL,
     method: "GET"
   }).then(function (response) {
+    console.log(response);
     $("#food-view").empty();
 
     var results = response.data;
@@ -194,9 +195,13 @@ function toggleFavorite() {
   var title = $(this).text();
   var emoj = title.substr(0, 2);
   if (emoj == f_neutral) {
-    tipStr = "Click to remove from favorite!";
-    title = title.replace(f_neutral, f_love);
-    addToFavorite($(this));
+    if (favorList.length < 10 ) {
+      tipStr = "Click to remove from favorite!";
+      title = title.replace(f_neutral, f_love);
+      addToFavorite($(this));
+    } else {
+      tipStr = "Favrite Gifs reach limit of 10!";
+    }
   } else {
     tipStr = "Click to add to favorite!";
     title = title.replace(f_love, f_neutral);

@@ -19,3 +19,8 @@ This app is the showcase of using GIPHY API.  We are focusing on food gifs. Hope
     - All logic are done in JavaScript.
     - Use localStorage to make favorite gifs persisted when reload the app or browser.
     - Use JSON to manage the favorite gifs (array of object) so it can be saved in/loaded from localStorage
+
+### Potential update
+    - Option to delete button.
+    - Add additional gifs.
+    
